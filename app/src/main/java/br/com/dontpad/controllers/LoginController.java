@@ -15,17 +15,19 @@ public class LoginController {
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference usersReference = FirebaseDatabase.getInstance().getReference().child("users");
 
-    public String autorizeLogin(String url){
-        final String[] urlLogin = new String[1];
+    public User autorizeLogin(String url){
+        User newUser = new User();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        usersReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     User user = data.getValue(User.class);
 
-                    if(user != null && user.getName().equals(url))
-                        urlLogin[0] = user.getName();
+                    if(user != null && user.getName().equals(url)){
+                        newUser.setName(user.getName());
+                        newUser.setPad(user.getPad());
+                    }
                 }
             }
 
@@ -35,14 +37,16 @@ public class LoginController {
             }
         });
 
-        return urlLogin[0];
+        return newUser;
     }
 
-    public void createNewUrl(String url){
+    public User createNewUser(String url){
         User newUser = new User(url);
         newUser.setName(url);
 
         usersReference.child(url).setValue(newUser);
+
+        return newUser;
     }
 
 }

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.dontpad.R;
 import br.com.dontpad.controllers.LoginController;
+import br.com.dontpad.controllers.UserController;
 import br.com.dontpad.models.User;
 
 
@@ -18,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText urlEditText;
     private String url;
 
-    private User user;
+    // private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 url = urlEditText.getText().toString();
                 if(urlIsValid(url)){
-                    url = verifyLogin(url);
+                    verifyLogin(url);
                     changeActivity();
                 }
             }
@@ -42,30 +43,32 @@ public class LoginActivity extends AppCompatActivity {
     public void initializeVars(){
         this.loginButton = findViewById(R.id.button_login);
         this.urlEditText = findViewById(R.id.url_edit_text);
-        this.user = new User();
+        // this.user = new User();
     }
 
-    public String verifyLogin(String url){
+    public void verifyLogin(String url){
         //method to verify if the url exist in database
         LoginController loginController = new LoginController();
 
-        String loginUrl = loginController.autorizeLogin(url);
+        User newUser = loginController.autorizeLogin(url);
 
-        if(!urlIsValid(loginUrl)){
-            loginController.createNewUrl(url);
-            loginUrl = url;
+        if(!userExist(newUser)){
+            newUser = loginController.createNewUser(url);
         }
 
-        return loginUrl;
+        UserController.setUser(newUser);
     }
 
     public boolean urlIsValid(String url){
         return url != null && !url.equals("");
     }
 
+    public boolean userExist(User user){
+       return user.getPad() != null && !user.getName().equals("");
+    }
     public void changeActivity(){
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("userName", user.getName());
+        // intent.putExtra("userName", user.getName());
         startActivity(intent);
     }
 }

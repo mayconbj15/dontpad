@@ -12,12 +12,10 @@ import com.google.firebase.database.ValueEventListener;
 import br.com.dontpad.models.User;
 
 public class UserController {
+    public static User user;
 
     DatabaseReference usersReference = FirebaseDatabase.getInstance().getReference().child("users");
 
-    public UserController(){
-
-    }
 
     public User findUserByName(String name){
         User newUser = new User();
@@ -43,5 +41,13 @@ public class UserController {
         });
 
         return newUser;
+    }
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User newUser) {
+        user = newUser;
     }
 }

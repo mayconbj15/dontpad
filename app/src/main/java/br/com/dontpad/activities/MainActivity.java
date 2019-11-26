@@ -21,17 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         notepad = findViewById(R.id.note_edit_text);
 
-        user = getUserByName();
-    }
-
-    public User getUserByName(){
-        User user;
-        UserController userController = new UserController();
-
-        Intent intent = getIntent();
-        String userName = intent.getStringExtra("userName");
-        user = userController.findUserByName(userName);
-
-        return user;
+        user = UserController.getUser();
     }
 }
