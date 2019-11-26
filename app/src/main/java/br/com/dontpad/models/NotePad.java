@@ -4,7 +4,7 @@ public class NotePad {
     private String pad;
 
     public NotePad(){
-        this.pad = "KFODKFDFS";
+        this.pad = "";
     }
 
     public String getPad() {

@@ -1,5 +1,6 @@
 package br.com.dontpad.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import br.com.dontpad.R;
 import br.com.dontpad.controllers.LoginController;
 import br.com.dontpad.models.User;
+
 
 public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
@@ -29,8 +31,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 url = urlEditText.getText().toString();
-                if(urlIsValid(url))
+                if(urlIsValid(url)){
                     url = verifyLogin(url);
+                    changeActivity();
+                }
             }
         });
     }
@@ -57,5 +61,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean urlIsValid(String url){
         return url != null && !url.equals("");
+    }
+
+    public void changeActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
