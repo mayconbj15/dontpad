@@ -24,7 +24,7 @@ public class LoginController {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     User user = data.getValue(User.class);
 
-                    if(user.getName().equals(url))
+                    if(user != null && user.getName().equals(url))
                         urlLogin[0] = user.getName();
                 }
             }
@@ -39,7 +39,10 @@ public class LoginController {
     }
 
     public void createNewUrl(String url){
-        usersReference.setValue(url);
+        User newUser = new User(url);
+        newUser.setName(url);
+
+        usersReference.child(url).setValue(newUser);
     }
 
 }

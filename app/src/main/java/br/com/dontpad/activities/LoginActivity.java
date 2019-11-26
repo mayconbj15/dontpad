@@ -14,6 +14,7 @@ import br.com.dontpad.models.User;
 public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private EditText urlEditText;
+    private String url;
 
     private User user;
 
@@ -24,12 +25,10 @@ public class LoginActivity extends AppCompatActivity {
 
         initializeVars();
 
-        String url;
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = urlEditText.getText().toString();
+                url = urlEditText.getText().toString();
                 if(urlIsValid(url))
                     url = verifyLogin(url);
             }
@@ -48,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String loginUrl = loginController.autorizeLogin(url);
 
-        if(!(urlIsValid(url))){
+        if(!urlIsValid(loginUrl)){
             loginController.createNewUrl(url);
             loginUrl = url;
         }
