@@ -26,6 +26,7 @@ public class LoginController {
 
                     if(user != null && user.getName().equals(url)){
                         newUser.setName(user.getName());
+                        // provavel erro de sobescrever o usuário existente, verificar o valor de user.getPad()
                         newUser.setPad(user.getPad());
                     }
                 }
@@ -43,7 +44,8 @@ public class LoginController {
     public User createNewUser(String url){
         User newUser = new User(url);
         newUser.setName(url);
-
+        
+        // provável erro de sobescrever o usuário existente
         usersReference.child(url).setValue(newUser);
 
         return newUser;
