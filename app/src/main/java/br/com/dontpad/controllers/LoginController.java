@@ -1,5 +1,8 @@
 package br.com.dontpad.controllers;
 
+import android.app.Activity;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -8,17 +11,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import br.com.dontpad.activities.LoginActivity;
+import br.com.dontpad.activities.MainActivity;
 import br.com.dontpad.models.User;
 
 public class LoginController {
 
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference usersReference = FirebaseDatabase.getInstance().getReference().child("users");
+    private DatabaseReference usersReference = databaseReference.child("users");
 
     public User autorizeLogin(String url){
         User newUser = new User();
 
-        usersReference.addValueEventListener(new ValueEventListener() {
+        usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -28,6 +33,7 @@ public class LoginController {
                         newUser.setName(user.getName());
                         // provavel erro de sobescrever o usuário existente, verificar o valor de user.getPad()
                         newUser.setPad(user.getPad());
+                        break;
                     }
                 }
             }

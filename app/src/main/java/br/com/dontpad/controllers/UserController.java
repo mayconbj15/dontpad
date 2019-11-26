@@ -16,7 +16,6 @@ public class UserController {
 
     DatabaseReference usersReference = FirebaseDatabase.getInstance().getReference().child("users");
 
-
     public User findUserByName(String name){
         User newUser = new User();
 
@@ -29,6 +28,7 @@ public class UserController {
                     if(user != null && user.getName().equals(name)){
                         newUser.setName(user.getName());
                         newUser.setPad(user.getPad());
+                        break;
                     }
 
                 }
