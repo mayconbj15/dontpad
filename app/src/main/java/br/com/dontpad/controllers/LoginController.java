@@ -1,9 +1,11 @@
 package br.com.dontpad.controllers;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,22 +22,42 @@ public class LoginController {
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference usersReference = databaseReference.child("users");
 
-    public User autorizeLogin(String url){
-        User newUser = new User();
 
-        usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
+    public void autorizeLogin(String url){
+
+        usersReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User userLogin = new User();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     User user = data.getValue(User.class);
 
                     if(user != null && user.getName().equals(url)){
-                        newUser.setName(user.getName());
-                        // provavel erro de sobescrever o usuário existente, verificar o valor de user.getPad()
-                        newUser.setPad(user.getPad());
+                        userLogin.setName(user.getName());
+                        userLogin.setPad(user.getPad());
+
+                        if(!userExist(userLogin)){
+                            System.out.println("NÃO EXISTE");
+                            createNewUser(url);
+                        }
+
+                        //changeActivity();
+                        UserController.setUser(userLogin);
+                        LoginActivity.changeActivity = true;
+
+                        //changeActivity();
                         break;
                     }
+
+
                 }
+
+                if(!userExist(userLogin)){
+                    createNewUser(url);
+                    UserController.setUser(userLogin);
+                    LoginActivity.changeActivity = true;
+                }
+
             }
 
             @Override
@@ -44,7 +66,10 @@ public class LoginController {
             }
         });
 
-        return newUser;
+    }
+
+    public boolean userExist(User user){
+        return user.getPad() != null && !user.getName().equals("");
     }
 
     public User createNewUser(String url){
@@ -57,4 +82,12 @@ public class LoginController {
         return newUser;
     }
 
+    public void changeActivity(){
+        /*Intent intent = new Intent(this, MainActivity.class);
+        // intent.putExtra("userName", user.getName());
+        startActivity(intent);*/
+
+        LoginActivity loginActivity = new LoginActivity();
+        loginActivity.changeActivity();
+    }
 }

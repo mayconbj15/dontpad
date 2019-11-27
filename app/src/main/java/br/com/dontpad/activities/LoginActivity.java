@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,8 +21,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText urlEditText;
     private String url;
 
-    // private User user;
+    private LoginController loginController;
 
+    // private User user;
+    public  static boolean changeActivity = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +36,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 url = urlEditText.getText().toString();
+
                 if(urlIsValid(url)){
                     verifyLogin(url);
-                    changeActivity();
                 }
+
+                if(changeActivity)
+                    changeActivity();
+
             }
         });
     }
@@ -44,21 +51,16 @@ public class LoginActivity extends AppCompatActivity {
     public void initializeVars(){
         this.loginButton = findViewById(R.id.button_login);
         this.urlEditText = findViewById(R.id.url_edit_text);
+        this.loginController = new LoginController();
         // this.user = new User();
     }
 
     public void verifyLogin(String url){
         //method to verify if the url exist in database
-        LoginController loginController = new LoginController();
 
-        User newUser = loginController.autorizeLogin(url); //bug aqui
 
-        if(!userExist(newUser)){
-            Toast.makeText(getApplicationContext(), "aqui", Toast.LENGTH_SHORT).show();
-            newUser = loginController.createNewUser(url);
-        }
+        loginController.autorizeLogin(url); //bug aqui
 
-        UserController.setUser(newUser);
     }
 
     public boolean urlIsValid(String url){
@@ -66,8 +68,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean userExist(User user){
-       return user.getPad() != null && !user.getName().equals("");
+        return user.getPad() != null && !user.getName().equals("");
     }
+
     public void changeActivity(){
         Intent intent = new Intent(this, MainActivity.class);
         // intent.putExtra("userName", user.getName());
