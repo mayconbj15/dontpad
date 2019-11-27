@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +21,8 @@ import br.com.dontpad.models.User;
 public class MainActivity extends AppCompatActivity {
     private EditText notepad;
     private User user;
+    private Button buttonConfiguration;
+
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference usersReference = databaseReference.child("users");
 
@@ -36,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
         notepad = findViewById(R.id.note_edit_text);
 
         notepad.setText(user.getPad().getPad());
+
+        buttonConfiguration = findViewById(R.id.button_configuration);
+        buttonConfiguration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeActivity();
+            }
+        });
+
     }
 
     @Override
@@ -65,5 +78,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+    }
+
+    public void changeActivity(){
+        Intent intent = new Intent(this, ConfigurationActivity.class);
+        startActivity(intent);
     }
 }

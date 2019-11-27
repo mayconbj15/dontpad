@@ -23,6 +23,8 @@
 
         <activity android:name=".activities.MainActivity" />
 
+        <activity android:name=".activities.ConfigurationActivity" />
+
     </application>
 
 </manifest>

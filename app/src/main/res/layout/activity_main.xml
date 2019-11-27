@@ -7,15 +7,32 @@
     tools:context=".activities.MainActivity">
 
     <EditText
-        android:id="@+id/note-edit-text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/note_edit_text"
+        android:layout_width="395dp"
+        android:layout_height="535dp"
+        android:background="@android:color/background_light"
         android:ems="10"
         android:fontFamily="serif-monospace"
         android:gravity="top"
         android:inputType="textLongMessage|textMultiLine|text"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172" />
+
+    <Button
+        android:id="@+id/button_configuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#57E5E5F0"
+        android:fontFamily="serif-monospace"
+        android:text="Configuração"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/note_edit_text" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
