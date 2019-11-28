@@ -95,15 +95,15 @@ public class ConfigurationActivity extends AppCompatActivity {
         layoutConfiguration = findViewById(R.id.frame_layout_configuration);
         spinnerTextColor = findViewById(R.id.spinner_text_color);
         spinnerBackgroundColor = findViewById(R.id.spinner_background_color);
-        textColor = findViewById(R.id.text_color_view);
-        backgroundColor = findViewById(R.id.background_color_view);
+        textColor = findViewById(R.id.background_text_view);
+        backgroundColor = findViewById(R.id.background_text_view);
         saveButton = findViewById(R.id.button_save);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveConfiguration();
-                setConfiguration();
+
             }
         });
     }
@@ -125,8 +125,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         nightMode.setTextColor(getResources().getColor(ConfigurationController.colorText));
         nightMode.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
         layoutConfiguration.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
-        spinnerBackgroundColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
-        spinnerTextColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorText));
+        spinnerBackgroundColor.setBackgroundColor(getResources().getColor(R.color.gray));
+        spinnerTextColor.setBackgroundColor(getResources().getColor(R.color.gray));
 
         textColor.setTextColor(getResources().getColor(ConfigurationController.colorText));
         backgroundColor.setTextColor(getResources().getColor(ConfigurationController.colorText));
@@ -171,6 +171,8 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         ConfigurationController.changeTextColor(textColor);
         ConfigurationController.changeBackgroundColor(backgroundColor);
+
+        setConfiguration();
     }
 
     // notepad.setTextColor(getResources().getColor(R.color.colorAccent));

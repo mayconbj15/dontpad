@@ -27,16 +27,18 @@
         app:layout_constraintVertical_bias="0.105" />
 
     <TextView
-        android:id="@+id/text_color_view"
+        android:id="@+id/background_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:fontFamily="serif-monospace"
-        android:text="Cor do texto"
+        android:text="Cor do fundo"
         app:layout_constraintBottom_toTopOf="@+id/spinner_background_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toEndOf="@+id/background_color_view" />
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modo_noturno"
+        app:layout_constraintVertical_bias="0.884" />
 
     <Spinner
         android:id="@+id/spinner_text_color"
@@ -50,16 +52,20 @@
         app:layout_constraintVertical_bias="0.122" />
 
     <TextView
-        android:id="@+id/background_color_view"
+        android:id="@+id/text_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="serif-monospace"
-        android:text="Cor de fundo"
+        android:text="Cor de texto"
         app:layout_constraintBottom_toTopOf="@+id/spinner_text_color"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modo_noturno"
+        app:layout_constraintVertical_bias="0.884" />
 
     <Spinner
         android:id="@+id/spinner_background_color"

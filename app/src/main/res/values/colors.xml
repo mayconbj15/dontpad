@@ -12,5 +12,5 @@
     <color name="blue">#0000FF</color>
     <color name="darkBlue">#000080</color>
     <color name="violet">#EE82EE</color>
-    <color name="gray"></color>
+    <color name="gray">#808080</color>
 </resources>
