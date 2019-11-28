@@ -13,25 +13,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import br.com.dontpad.R;
+import br.com.dontpad.controllers.ConfigurationController;
 
 public class ConfigurationActivity extends AppCompatActivity {
     private Switch nightMode;
 
-    private EditText editTextPad;
-    private EditText editTextLogin;
-
-    private TextView welcomeTextView;
-
-    private LinearLayout linearLayoutLogin;
     private ConstraintLayout layoutConfiguration;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
 
-        getContext();
+        initializeVars();
+
+        setConfiguration();
+
+        verifyNightMode();
 
         nightMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -49,36 +47,82 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-    public void getContext(){
+        /*setConfiguration();
+        verifyNightMode();*/
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initializeVars();
+        setConfiguration();
+        verifyNightMode();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+
+    public void initializeVars(){
         nightMode = findViewById(R.id.modo_noturno);
-        editTextPad = findViewById(R.id.note_edit_text);
-        linearLayoutLogin = findViewById(R.id.linear_layout_login);
-        welcomeTextView = findViewById(R.id.welcome_text_view);
         layoutConfiguration = findViewById(R.id.frame_layout_configuration);
-        editTextLogin = findViewById(R.id.url_edit_text);
     }
 
     public void enableNightMode(){
-        nightMode.setTextColor(getResources().getColor(R.color.white));
-        nightMode.setBackgroundColor(getResources().getColor(R.color.black));
-        layoutConfiguration.setBackgroundColor(getResources().getColor(R.color.black));
-
-        /*linearLayoutLogin.setBackgroundColor(getResources().getColor(R.color.black));
-        welcomeTextView.setBackgroundColor(getResources().getColor(R.color.black));
-        welcomeTextView.setTextColor(getResources().getColor(R.color.white));
-        editTextLogin.setTextColor(getResources().getColor(R.color.white));
-
-        editTextPad.setBackgroundColor(getResources().getColor(R.color.black));
-        editTextPad.setTextColor(getResources().getColor(R.color.white));*/
-
-
+        ConfigurationController.enableNightMode();
+        changeConfiguration();
+        ConfigurationController.isChanged = true;
+        ConfigurationController.nightMode = true;
     }
 
     public void disableNightMode(){
-        nightMode.setTextColor(getResources().getColor(R.color.black));
-        nightMode.setBackgroundColor(getResources().getColor(R.color.white));
-        layoutConfiguration.setBackgroundColor(getResources().getColor(R.color.white));
+       ConfigurationController.disableNightMode();
+       changeConfiguration();
+       ConfigurationController.isChanged = true;
+        ConfigurationController.nightMode = false;
+    }
+
+    public void setConfiguration(){
+        if(ConfigurationController.isChanged){
+            nightMode.setTextColor(getResources().getColor(ConfigurationController.colorText));
+            nightMode.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
+            layoutConfiguration.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
+            ConfigurationController.isChanged = false;
+        }
+    }
+
+    public void changeConfiguration(){
+        nightMode.setTextColor(getResources().getColor(ConfigurationController.colorText));
+        nightMode.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
+        layoutConfiguration.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
+    }
+
+    public void verifyNightMode(){
+        if(ConfigurationController.nightMode)
+            nightMode.setChecked(true);
+        else
+            nightMode.setChecked(false);
     }
     // notepad.setTextColor(getResources().getColor(R.color.colorAccent));
 }

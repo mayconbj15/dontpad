@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import br.com.dontpad.R;
+import br.com.dontpad.controllers.ConfigurationController;
 import br.com.dontpad.controllers.UserController;
 import br.com.dontpad.models.User;
 
@@ -30,30 +31,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initializeVars();
+        setConfiguration();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        user = UserController.getUser();
-        notepad = findViewById(R.id.note_edit_text);
-
-        notepad.setText(user.getPad().getPad());
-
-        buttonConfiguration = findViewById(R.id.button_configuration);
-        buttonConfiguration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                changeActivity();
-            }
-        });
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        initializeVars();
+        setConfiguration();
     }
 
     @Override
@@ -83,5 +76,28 @@ public class MainActivity extends AppCompatActivity {
     public void changeActivity(){
         Intent intent = new Intent(this, ConfigurationActivity.class);
         startActivity(intent);
+    }
+
+    public void setConfiguration(){
+        if(ConfigurationController.isChanged){
+            notepad.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
+            notepad.setTextColor(getResources().getColor(ConfigurationController.colorText));
+        }
+
+    }
+
+    public void initializeVars(){
+        user = UserController.getUser();
+        notepad = findViewById(R.id.note_edit_text);
+
+        notepad.setText(user.getPad().getPad());
+
+        buttonConfiguration = findViewById(R.id.button_configuration);
+        buttonConfiguration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeActivity();
+            }
+        });
     }
 }
