@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    android:visibility="visible"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.MainActivity"
+    tools:showIn="@layout/app_bar_main">
 
     <EditText
         android:id="@+id/note_edit_text"
-        android:layout_width="395dp"
-        android:layout_height="535dp"
+        android:layout_width="415dp"
+        android:layout_height="680dp"
         android:background="@android:color/background_light"
         android:ems="10"
         android:fontFamily="serif-monospace"
@@ -23,16 +26,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.172" />
 
-    <Button
-        android:id="@+id/button_configuration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#57E5E5F0"
-        android:fontFamily="serif-monospace"
-        android:text="Configuração"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_edit_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

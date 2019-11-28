@@ -1,16 +1,21 @@
 package br.com.dontpad.activities;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,21 +24,40 @@ import br.com.dontpad.controllers.ConfigurationController;
 import br.com.dontpad.controllers.UserController;
 import br.com.dontpad.models.User;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private EditText notepad;
     private User user;
-    private Button buttonConfiguration;
 
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference usersReference = databaseReference.child("users");
 
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private TextView userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
 
         initializeVars();
         setConfiguration();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        navigationView = findViewById(R.id.nav);
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+        drawerLayout = findViewById(R.id.drawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+
     }
 
     @Override
@@ -89,12 +113,20 @@ public class MainActivity extends AppCompatActivity {
 
         notepad.setText(user.getPad().getPad());
 
-        buttonConfiguration = findViewById(R.id.button_configuration);
-        buttonConfiguration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                changeActivity();
-            }
-        });
+        userName = findViewById(R.id.user_name_text_view);
+        // userName.setText("Url: " + user.getName());
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        // Handle navigation view item clicks here.
+        int id = menuItem.getItemId();
+        if (id == R.id.configuration_item) {
+            changeActivity();
+            return true;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 }
