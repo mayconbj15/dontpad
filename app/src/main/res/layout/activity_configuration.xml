@@ -5,22 +5,71 @@
     android:id="@+id/frame_layout_configuration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ConfigurationActivity">>
+    tools:context=".activities.ConfigurationActivity"><![CDATA[>
+
+    ]]>
 
     <Switch
         android:id="@+id/modo_noturno"
-        android:layout_width="163dp"
+        android:layout_width="197dp"
         android:layout_height="77dp"
         android:layout_marginTop="28dp"
         android:cursorVisible="true"
+        android:fontFamily="serif-monospace"
         android:text="Modo Noturno"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.105" />
+
+    <TextView
+        android:id="@+id/text_color_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="serif-monospace"
+        android:text="Cor do texto"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_background_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintStart_toEndOf="@+id/background_color_view" />
+
+    <Spinner
+        android:id="@+id/spinner_text_color"
+        android:layout_width="117dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modo_noturno"
+        app:layout_constraintVertical_bias="0.122" />
+
+    <TextView
+        android:id="@+id/background_color_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="serif-monospace"
+        android:text="Cor de fundo"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_text_color"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_background_color"
+        android:layout_width="116dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modo_noturno"
+        app:layout_constraintVertical_bias="0.12" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

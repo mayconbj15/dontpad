@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Dont pad</string>
     <string name="welcome" >Welcome to Dont pad</string>
+
+    <string-array name="colors">
+        <item>Vermelho</item>
+        <item>Laranja</item>
+        <item>Amarelo</item>
+        <item>Verde</item>
+        <item>Azul</item>
+        <item>Anil</item>
+        <item>Violeta</item>
+    </string-array>
 </resources>
