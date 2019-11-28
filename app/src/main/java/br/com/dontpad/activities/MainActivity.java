@@ -79,11 +79,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setConfiguration(){
-        if(ConfigurationController.isChanged){
             notepad.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
             notepad.setTextColor(getResources().getColor(ConfigurationController.colorText));
-        }
-
     }
 
     public void initializeVars(){

@@ -25,4 +25,40 @@ public class ConfigurationController {
         ConfigurationController.colorText = colorText;
         ConfigurationController.colorBackground = colorBackground;
     }
+
+    public static void changeTextColor(Object color){
+        switch ((String)color){
+            case "Vermelho": colorText = R.color.red; break;
+
+            case "Laranja": colorText = R.color.orange; break;
+
+            case "Amarelo": colorText = R.color.yellow; break;
+
+            case "Verde": colorText = R.color.green; break;
+
+            case "Azul": colorText = R.color.blue; break;
+
+            case "Anil": colorText = R.color.darkBlue; break;
+
+            case "Violeta": colorText = R.color.violet; break;
+        }
+    }
+
+    public static void changeBackgroundColor(Object color){
+        switch ((String)color){
+            case "Vermelho": colorBackground = R.color.red; break;
+
+            case "Laranja": colorBackground = R.color.orange; break;
+
+            case "Amarelo": colorBackground = R.color.yellow; break;
+
+            case "Verde": colorBackground = R.color.green; break;
+
+            case "Azul": colorBackground = R.color.blue; break;
+
+            case "Anil": colorBackground = R.color.darkBlue; break;
+
+            case "Violeta": colorBackground = R.color.violet; break;
+        }
+    }
 }

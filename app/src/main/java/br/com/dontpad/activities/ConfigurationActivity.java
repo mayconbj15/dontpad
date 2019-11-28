@@ -3,10 +3,8 @@ package br.com.dontpad.activities;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -24,6 +22,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private TextView textColor;
     private TextView backgroundColor;
+    private Button saveButton;
 
     private ConstraintLayout layoutConfiguration;
 
@@ -98,43 +97,35 @@ public class ConfigurationActivity extends AppCompatActivity {
         spinnerBackgroundColor = findViewById(R.id.spinner_background_color);
         textColor = findViewById(R.id.text_color_view);
         backgroundColor = findViewById(R.id.background_color_view);
+        saveButton = findViewById(R.id.button_save);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveConfiguration();
+                setConfiguration();
+            }
+        });
     }
 
     public void enableNightMode(){
         ConfigurationController.enableNightMode();
-        changeConfiguration();
+        setConfiguration();
 
         ConfigurationController.nightMode = true;
     }
 
     public void disableNightMode(){
        ConfigurationController.disableNightMode();
-       changeConfiguration();
+       setConfiguration();
        ConfigurationController.nightMode = false;
     }
 
     public void setConfiguration(){
-        if(ConfigurationController.isChanged){
-            nightMode.setTextColor(getResources().getColor(ConfigurationController.colorText));
-            nightMode.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
-            layoutConfiguration.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
-            spinnerBackgroundColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorText));
-            spinnerTextColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorText));
-
-            textColor.setTextColor(getResources().getColor(ConfigurationController.colorText));
-            backgroundColor.setTextColor(getResources().getColor(ConfigurationController.colorText));
-            textColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
-            backgroundColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
-
-            ConfigurationController.isChanged = false;
-        }
-    }
-
-    public void changeConfiguration(){
         nightMode.setTextColor(getResources().getColor(ConfigurationController.colorText));
         nightMode.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
         layoutConfiguration.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
-        spinnerBackgroundColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorText));
+        spinnerBackgroundColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
         spinnerTextColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorText));
 
         textColor.setTextColor(getResources().getColor(ConfigurationController.colorText));
@@ -142,7 +133,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         textColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
         backgroundColor.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
 
-        ConfigurationController.isChanged = true;
+        ConfigurationController.isChanged = false;
+
     }
 
     public void verifyNightMode(){
@@ -172,5 +164,14 @@ public class ConfigurationActivity extends AppCompatActivity {
         spinnerBackgroundColor.setAdapter(adapter2);
 
     }
+
+    public void saveConfiguration(){
+        Object textColor = spinnerTextColor.getSelectedItem();
+        Object backgroundColor = spinnerBackgroundColor.getSelectedItem();
+
+        ConfigurationController.changeTextColor(textColor);
+        ConfigurationController.changeBackgroundColor(backgroundColor);
+    }
+
     // notepad.setTextColor(getResources().getColor(R.color.colorAccent));
 }
