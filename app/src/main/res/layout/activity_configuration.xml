@@ -42,8 +42,11 @@
 
     <Spinner
         android:id="@+id/spinner_text_color"
+        style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
         android:layout_width="117dp"
         android:layout_height="30dp"
+        android:dropDownSelector="@color/gray"
+        android:theme="@style/AppTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
@@ -71,6 +74,7 @@
         android:id="@+id/spinner_background_color"
         android:layout_width="116dp"
         android:layout_height="30dp"
+        android:dropDownSelector="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.82"

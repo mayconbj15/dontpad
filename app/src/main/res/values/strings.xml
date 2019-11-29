@@ -23,4 +23,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="crie_um_nome_para_o_arquivo_e_fa_a_login">- Crie um nome para o arquivo e faça login</string>
+    <string name="login">login</string>
+    <string name="instru_es">Instruções:</string>
 </resources>

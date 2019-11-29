@@ -28,6 +28,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private LinearLayout linearLayoutLogin;
     private TextView welcomeTextView;
+    private TextView instructionsTextView;
+    private TextView i1TextView;
+    private TextView i2TextView;
+    private TextView i3TextView;
 
     private LoginController loginController;
 
@@ -96,6 +100,11 @@ public class LoginActivity extends AppCompatActivity {
         this.urlEditText = findViewById(R.id.url_edit_text);
         this.linearLayoutLogin = findViewById(R.id.linear_layout_login);
         this.welcomeTextView = findViewById(R.id.welcome_text_view);
+        this.instructionsTextView = findViewById(R.id.instructionsID);
+        this.i1TextView = findViewById(R.id.i1ID);
+        this.i2TextView = findViewById(R.id.i2ID);
+        this.i3TextView = findViewById(R.id.i3ID);
+
         this.loginController = new LoginController();
     }
 
@@ -122,6 +131,10 @@ public class LoginActivity extends AppCompatActivity {
         linearLayoutLogin.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
         welcomeTextView.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
         welcomeTextView.setTextColor(getResources().getColor(ConfigurationController.colorText));
+        instructionsTextView.setTextColor(getResources().getColor(ConfigurationController.colorText));
+        i1TextView.setTextColor(getResources().getColor(ConfigurationController.colorText));
+        i2TextView.setTextColor(getResources().getColor(ConfigurationController.colorText));
+        i3TextView.setTextColor(getResources().getColor(ConfigurationController.colorText));
         urlEditText.setTextColor(getResources().getColor(ConfigurationController.colorText));
     }
 

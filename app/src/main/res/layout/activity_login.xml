@@ -39,6 +39,37 @@
         android:layout_gravity="center_horizontal"
         android:background="#57E5E5F0"
         android:fontFamily="serif-monospace"
-        android:text="login"
+        android:text="@string/login"
         android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/instructionsID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
+        android:text="@string/instru_es"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/i1ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="   - Crie um nome para o seu arquivo e faça o login" />
+
+    <TextView
+        android:id="@+id/i2ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="   - Edite com seus amigos" />
+
+    <TextView
+        android:id="@+id/i3ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="   - O save é automático, não se preocupe :D" />
+
 </LinearLayout>
