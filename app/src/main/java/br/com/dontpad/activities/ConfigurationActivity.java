@@ -95,7 +95,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         layoutConfiguration = findViewById(R.id.frame_layout_configuration);
         spinnerTextColor = findViewById(R.id.spinner_text_color);
         spinnerBackgroundColor = findViewById(R.id.spinner_background_color);
-        textColor = findViewById(R.id.background_text_view);
+        textColor = findViewById(R.id.text_text_view);
         backgroundColor = findViewById(R.id.background_text_view);
         saveButton = findViewById(R.id.button_save);
 
