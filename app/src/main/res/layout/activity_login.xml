@@ -1,79 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linear_layout_login"
+    android:id="@+id/constraint_layout_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.LoginActivity"
+    android:background="@drawable/background_gradient"
+    android:windowLightStatusBar="true"
+    >
 
     <TextView
         android:id="@+id/welcome_text_view"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="170dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginTop="160dp"
         android:fontFamily="serif-monospace"
         android:gravity="center"
         android:text="@string/welcome"
-        android:textColor="@color/vrau"
-        android:textSize="30sp" />
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/url_edit_text"
-        android:layout_width="248dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="-180dp"
+        android:layout_width="270dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="Insira o nome do arquivo..."
         android:inputType="textPersonName"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_text_view" />
 
     <Button
         android:id="@+id/button_login"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:background="#9A7093DB"
+        android:layout_marginTop="24dp"
+        android:background="#9A3E6ACF"
         android:fontFamily="serif-monospace"
         android:text="@string/login"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/url_edit_text"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/url_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/url_edit_text" />
 
     <TextView
         android:id="@+id/instructionsID"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="serif-monospace"
         android:text="@string/instru_es"
         android:textColor="#000000"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_login" />
 
     <TextView
         android:id="@+id/i1ID"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="   - Crie um nome para o seu arquivo e faça o login" />
+        android:text="   - Crie um nome para o seu arquivo e faça o login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructionsID" />
 
     <TextView
         android:id="@+id/i2ID"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="   - Edite com seus amigos" />
+        android:text="   - Edite com seus amigos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/i1ID" />
 
     <TextView
         android:id="@+id/i3ID"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="   - O save é automático, não se preocupe :D" />
+        android:text="   - O save é automático, não se preocupe :D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/i2ID" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

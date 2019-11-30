@@ -5,19 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import br.com.dontpad.R;
 import br.com.dontpad.controllers.ConfigurationController;
 import br.com.dontpad.controllers.LoginController;
-import br.com.dontpad.controllers.UserController;
 import br.com.dontpad.models.User;
 
 
@@ -26,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText urlEditText;
     private String url;
 
-    private LinearLayout linearLayoutLogin;
+    private ConstraintLayout constraintLayoutLogin;
     private TextView welcomeTextView;
     private TextView instructionsTextView;
     private TextView i1TextView;
@@ -98,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
     public void initializeVars(){
         this.loginButton = findViewById(R.id.button_login);
         this.urlEditText = findViewById(R.id.url_edit_text);
-        this.linearLayoutLogin = findViewById(R.id.linear_layout_login);
+        this.constraintLayoutLogin = findViewById(R.id.constraint_layout_login);
         this.welcomeTextView = findViewById(R.id.welcome_text_view);
         this.instructionsTextView = findViewById(R.id.instructionsID);
         this.i1TextView = findViewById(R.id.i1ID);
@@ -127,9 +122,8 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void setConfiguration(){
-        linearLayoutLogin.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
-        welcomeTextView.setBackgroundColor(getResources().getColor(ConfigurationController.colorBackground));
+    public void setConfiguration()
+    {
         welcomeTextView.setTextColor(getResources().getColor(ConfigurationController.colorText));
         instructionsTextView.setTextColor(getResources().getColor(ConfigurationController.colorText));
         i1TextView.setTextColor(getResources().getColor(ConfigurationController.colorText));

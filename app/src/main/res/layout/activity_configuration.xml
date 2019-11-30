@@ -5,6 +5,7 @@
     android:id="@+id/frame_layout_configuration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:windowLightStatusBar="true"
     tools:context=".activities.ConfigurationActivity"><![CDATA[>
 
     ]]>
@@ -37,10 +38,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/spinner_background_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toEndOf="@+id/text_text_view"
         app:layout_constraintTop_toBottomOf="@+id/modo_noturno"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintVertical_bias="0.868" />
 
     <Spinner
         android:id="@+id/spinner_text_color"
@@ -49,12 +50,10 @@
         android:background="#9A7093DB"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/text_text_view"
+        app:layout_constraintStart_toStartOf="@+id/text_text_view"
         app:layout_constraintTop_toBottomOf="@+id/modo_noturno"
-        app:layout_constraintVertical_bias="0.122"
-        />
+        app:layout_constraintVertical_bias="0.143" />
 
     <TextView
         android:id="@+id/text_text_view"
@@ -67,25 +66,23 @@
         android:text="Cor de texto"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/spinner_text_color"
-        app:layout_constraintEnd_toStartOf="@+id/background_text_view"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modo_noturno"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintVertical_bias="0.868" />
 
     <Spinner
         android:id="@+id/spinner_background_color"
         android:layout_width="116dp"
         android:layout_height="30dp"
-        android:dropDownSelector="#DF9CA3AF"
         android:background="#9A7093DB"
+        android:dropDownSelector="#DF9CA3AF"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/background_text_view"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/background_text_view"
         app:layout_constraintTop_toBottomOf="@+id/modo_noturno"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.143" />
 
     <Button
         android:id="@+id/button_save"
@@ -96,8 +93,10 @@
         android:text="Salvar"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/spinner_background_color"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="@+id/spinner_text_color"
+        app:layout_constraintTop_toBottomOf="@+id/modo_noturno"
+        app:layout_constraintVertical_bias="0.333" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
